@@ -1,0 +1,39 @@
+# SERVICE PER ACCESSO A DIFY-AI
+apiVersion: v1
+kind: Service
+metadata:
+  name: dify
+spec:
+  selector:
+    app: dify
+  ports:
+    - port: 80
+      targetPort: 5001
+  type: ClusterIP
+
+# DEPLOY POD DIFY-AI
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dify
+  namespace: default
+  labels:
+    app: dify
+spec:
+  containers:
+    - name: dify
+      image: langgenius/dify:latest
+      ports:
+        - containerPort: 5001
+      env:
+        - name: MODE
+          value: "standalone"
+        - name: SECRET_KEY
+          value: "supersecretkey"
+      resources:
+        requests:
+          cpu: 500m
+          memory: 1Gi
+        limits:
+          cpu: 2
+          memory: 2Gi

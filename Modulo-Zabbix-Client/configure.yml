@@ -1,0 +1,8 @@
+- name: Configure Zabbix Agent
+  template:
+    src: zabbix_agentd.conf.j2    # template Jinja2
+    dest: /etc/zabbix/zabbix_agentd.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Restart zabbix agent    # riavvia se il file cambia

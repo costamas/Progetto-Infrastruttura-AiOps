@@ -1,0 +1,11 @@
+- name: Install Zabbix Agent (Debian/Ubuntu)
+  apt:
+    name: zabbix-agent        # nome del pacchetto
+    state: present            # installa solo se non presente
+    update_cache: yes         # equivale a "apt update"
+
+- name: Enable and start Zabbix Agent service
+  service:
+    name: zabbix-agent        # nome del servizio
+    enabled: true             # avvio automatico al boot
+    state: started            # avvia subito il servizio

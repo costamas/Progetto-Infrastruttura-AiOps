@@ -1,0 +1,9 @@
+- name: Update Zabbix Agent
+  hosts: zabbix_agents
+  become: true
+
+  tasks:
+    - name: Esecuzione aggiornamento del zabbix_agent role
+      include_role:
+        name: zabbix_agent
+        tasks_from: update.yml

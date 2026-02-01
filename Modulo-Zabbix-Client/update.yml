@@ -1,0 +1,5 @@
+- name: Update Zabbix Agent to latest version
+  apt:
+    name: zabbix-agent        # pacchetto da aggiornare
+    state: latest             # installa l’ultima versione
+    update_cache: yes
