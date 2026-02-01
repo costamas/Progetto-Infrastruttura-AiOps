@@ -2,12 +2,13 @@ Il presente repository contiene l'insieme dei manifest e dei file yaml necessari
 Si riporta di seguito l'alberatura del repository:
 
 Repository: Progetto-Infrastruttura-AiOps
-|__ Modulo-AWX 
+Modulo-AWX 
 
     |_ Deploy-Awx-Installation.yml
     |_ Deploy-Awx-Operator.yml
     |_ Deploy-Awx-ServiceAccount.yml
-|__ Modulo-Ansible-Automation-Platform
+    
+Modulo-Ansible-Automation-Platform
 
     |_ Deploy-Modulo-Ansible.yml
     |_ Playbook-Ansible
@@ -19,19 +20,28 @@ Repository: Progetto-Infrastruttura-AiOps
        |_ Manage_Swap.yml
        |_ Restart_Services.yml
        |_ Rotate_Logs.yml
-|__ Modulo-Dify-AI
+Modulo-Dify-AI
+
     |_ Deploy-Modulo-AI-Engine.yml
-|__ Modulo-Grafana
+    
+Modulo-Grafana
+
     |_ Deploy-Grafana-Installation.yml
     |_ Deploy-Grafana-Prerequisites.yml
     |_ Deploy-Grafana-Service.yml
-|__ Modulo-Network
+
+Modulo-Network
+
     |_ Configurazione-MetaLB.yml
     |_ Deploy-Ingress-Controller.yml
     |_ Load-Balancer.yml
-|__ Modulo-Storage-DIstribuito-Longhorn
+
+Modulo-Storage-DIstribuito-Longhorn
+
     |_ Deploy-Storage-Class-Longhorn.yml
-|__ Modulo-Zabbix-Client
+
+Modulo-Zabbix-Client
+
     |_ configure.yml
     |_ hosts.ini
     |_ install.yml
@@ -41,7 +51,9 @@ Repository: Progetto-Infrastruttura-AiOps
     |_ zabbix_agent2.man
     |_ zabbix_agentd.man
     |_ zabbix_get.man
-|__ Modulo-Zabbix-Database
+
+Modulo-Zabbix-Database
+
     |_ postgres-cluster.yml
     |_ postgres-pod.yml
     |_ Schema-Zabbix
@@ -50,10 +62,12 @@ Repository: Progetto-Infrastruttura-AiOps
        |_ data.sql
        |_ images.sql
        |_ schema.sql
-|__ Modulo-Zabbix-Front-End
+Modulo-Zabbix-Front-End
+
     |_ Deploy-Zabbix-FrontEnd.yml
     |_ zabbix_web_service.man
-|__ Modulo-Zabbix-Server
+Modulo-Zabbix-Server
+
     |_ Deploy-Zabbix-Server.yml
     |_ zabbix_sender.man
     |_ zabbix_server.conf
