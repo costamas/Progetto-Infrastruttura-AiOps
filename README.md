@@ -1,7 +1,7 @@
 Il presente repository contiene l'insieme dei manifest e dei file yaml necessari per il deploy di un'infrastruttura AiOps basata su microservizi.
-Si riporta di seguito l'alberatura del repository:
+Si riporta di seguito l'alberatura del repository: 
 
-Repository: Progetto-Infrastruttura-AiOps
+
 Modulo-AWX 
 
     |_ Deploy-Awx-Installation.yml
