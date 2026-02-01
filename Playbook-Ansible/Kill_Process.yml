@@ -1,0 +1,22 @@
+---
+- name: kill_process.yml
+  hosts: "{{ host | default('all') }}"
+  become: true
+  gather_facts: false
+  vars:
+    process_name: "{{ process_name | default('java') }}"
+    signal: "{{ signal | default('TERM') }}"
+    max_matches: "{{ max_matches | default(3) }}"
+  tasks:
+    - name: List PIDs by process name
+      ansible.builtin.shell: "pgrep -f '{{ process_name }}' || true"
+      register: pids
+      changed_when: false
+    - name: Fail if too many matches (blast radius protection)
+      ansible.builtin.fail:
+        msg: "Too many processes matched ({{ pids.stdout_lines | length }}), aborting."
+      when: (pids.stdout_lines | length) > (max_matches | int)
+    - name: Send signal to matched PIDs
+      ansible.builtin.command: "kill -s {{ signal }} {{ item }}"
+      loop: "{{ pids.stdout_lines }}"
+      when: (pids.stdout_lines | length) > 0
