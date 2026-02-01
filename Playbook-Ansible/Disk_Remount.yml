@@ -1,0 +1,30 @@
+---
+- name: disk_remount.yml
+  hosts: "{{ host | default('all') }}"
+  become: true
+  gather_facts: false
+  vars:
+    mount_point: "{{ mount_point | default('/') }}"
+    attempt_remount_rw: "{{ attempt_remount_rw | default(false) }}"
+  tasks:
+    - name: Check mount flags
+      ansible.builtin.shell: "mount | grep ' on {{ mount_point }} ' || true"
+      register: mount_line
+      changed_when: false
+    - name: Recent kernel messages (I/O errors)
+      ansible.builtin.shell: "dmesg -T | tail -n 80"
+      register: dmesg_tail
+      changed_when: false
+    - name: Attempt remount as rw (optional)
+      ansible.builtin.command: "mount -o remount,rw {{ mount_point }}"
+      when: attempt_remount_rw
+      register: remount
+      changed_when: remount.rc == 0
+      failed_when: false
+    - name: Report
+      ansible.builtin.debug:
+        msg:
+          - "Mount: {{ mount_line.stdout }}"
+          - "Remount attempted: {{ attempt_remount_rw }}"
+          - "Remount rc: {{ remount.rc | default('N/A') }}"
+          - "dmesg tail: {{ dmesg_tail.stdout_lines }}"
