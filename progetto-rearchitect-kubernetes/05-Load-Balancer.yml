@@ -1,0 +1,17 @@
+#SERVICE LOAD BALANCER PER TRAEFIK
+apiVersion: v1
+kind: Service
+metadata:
+  name: traefik
+  namespace: traefik
+spec:
+  type: LoadBalancer # MetalLB assegna l'IP esterno: di tipo LOAD BALANCER!!!!!!
+  selector:
+    app.kubernetes.io/name: traefik
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8000
+    - name: https
+      port: 443
+      targetPort: 8443

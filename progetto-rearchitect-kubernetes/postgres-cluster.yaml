@@ -1,0 +1,39 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: pg-cluster
+  namespace: postgres
+spec:
+  instances: 2
+
+  imageName: ghcr.io/cloudnative-pg/postgresql:16.3
+
+  storage:
+    size: 10Gi
+    storageClass: longhorn   # ⬅️ cambia se serve
+
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "250m"
+    limits:
+      memory: "1Gi"
+      cpu: "500m"
+
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node-role.kubernetes.io/worker
+            operator: Exists
+
+  superuserSecret:
+    name: pg-superuser
+
+  bootstrap:
+    initdb:
+      database: appdb
+      owner: appuser
+      secret:
+        name: pg-appuser
