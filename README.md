@@ -2,7 +2,9 @@ Il presente repository contiene l'insieme dei manifest e dei file yaml necessari
 Si riporta di seguito l'alberatura del repository:
 
 Repository: Progetto-Infrastruttura-AiOps
+
 |__ Modulo-AWX
+
     |_ Deploy-Awx-Installation.yml
     |_ Deploy-Awx-Operator.yml
     |_ Deploy-Awx-ServiceAccount.yml
