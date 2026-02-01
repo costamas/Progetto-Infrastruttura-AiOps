@@ -1,0 +1,26 @@
+---
+- name: restart_service.yml
+  hosts: "{{ host | default('all') }}"
+  become: true
+  gather_facts: false
+  vars:
+    service_name: "{{ service_name | default('nginx') }}"
+    ensure_running: "{{ ensure_running | default(true) }}"
+    restart_only_if_inactive: "{{ restart_only_if_inactive | default(true) }}"
+  tasks:
+    - name: Check service state
+      ansible.builtin.command: "systemctl is-active {{ service_name }}"
+      register: svc_state
+      changed_when: false
+      failed_when: false
+
+    - name: Restart service only if inactive (safe mode)
+      ansible.builtin.service:
+        name: "{{ service_name }}"
+        state: restarted
+      when: restart_only_if_inactive and svc_state.stdout != "active"
+    - name: Ensure service is running
+      ansible.builtin.service:
+        name: "{{ service_name }}"
+        state: started
+      when: ensure_running
