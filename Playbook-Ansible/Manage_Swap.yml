@@ -1,0 +1,30 @@
+---
+- name: manage_swap.yml
+  hosts: "{{ host | default('all') }}"
+  become: true
+  gather_facts: false
+  vars:
+    swappiness_value: "{{ swappiness_value | default(10) }}"
+    apply_swappiness: "{{ apply_swappiness | default(false) }}"
+  tasks:
+    - name: Show swap status
+      ansible.builtin.shell: "swapon --show || true; free -m"
+      register: swap_status
+      changed_when: false
+    - name: Show current swappiness
+      ansible.builtin.command: "sysctl vm.swappiness"
+      register: swap_sysctl
+      changed_when: false
+    - name: Apply swappiness (optional)
+      ansible.builtin.sysctl:
+        name: vm.swappiness
+        value: "{{ swappiness_value }}"
+        state: present
+        reload: true
+      when: apply_swappiness
+    - name: Report
+      ansible.builtin.debug:
+        msg:
+          - "Swap:\n{{ swap_status.stdout }}"
+          - "Before swappiness: {{ swap_sysctl.stdout }}"
+          - "Applied: {{ apply_swappiness }} (value={{ swappiness_value }})"
