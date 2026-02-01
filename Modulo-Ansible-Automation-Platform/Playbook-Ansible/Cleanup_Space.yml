@@ -1,0 +1,46 @@
+---
+- name: clenup_space.yml
+  hosts: "{{ host | default('all') }}"
+  become: true
+  gather_facts: false
+  vars:
+    mount_point: "{{ mount_point | default('/') }}"
+    tmp_paths: "{{ tmp_paths | default(['/tmp','/var/tmp']) }}"
+    tmp_age_days: "{{ tmp_age_days | default(3) }}"
+    log_paths: "{{ log_paths | default(['/var/log']) }}"
+    max_delete_mb: "{{ max_delete_mb | default(1024) }}"  # safety cap
+  tasks:
+    - name: Disk usage before
+      ansible.builtin.command: "df -hP {{ mount_point }}"
+      register: df_before
+      changed_when: false
+    - name: Find old tmp files
+      ansible.builtin.find:
+        paths: "{{ tmp_paths }}"
+        age: "{{ tmp_age_days }}d"
+        age_stamp: mtime
+        recurse: true
+        file_type: file
+      register: tmp_files
+    - name: Calculate total size to delete (MB)
+      ansible.builtin.set_fact:
+        delete_mb: "{{ (tmp_files.files | map(attribute='size') | sum | default(0)) / 1024 / 1024 | int }}"
+    - name: Safety check - cap deletions
+      ansible.builtin.fail:
+        msg: "Deletion size cap exceeded: {{ delete_mb }}MB > {{ max_delete_mb }}MB"
+      when: delete_mb | int > max_delete_mb | int
+    - name: Zip old tmp files
+      ansible.builtin.file:
+        path: "{{ item.path }}"
+        state: absent
+      loop: "{{ tmp_files.files }}"
+    - name: Disk usage after
+      ansible.builtin.command: "df -hP {{ mount_point }}"
+      register: df_after
+      changed_when: false
+    - name: Report
+      ansible.builtin.debug:
+        msg:
+          - "Before: {{ df_before.stdout }}"
+          - "After:  {{ df_after.stdout }}"
+          - "Deleted approx: {{ delete_mb }} MB (tmp only)"

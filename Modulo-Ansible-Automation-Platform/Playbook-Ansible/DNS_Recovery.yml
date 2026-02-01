@@ -1,0 +1,15 @@
+- name: DNS_recovery.yml
+  hosts: "{{ host | default('all') }}"
+  become: true
+  gather_facts: false
+  vars:
+    test_domain: "{{ test_domain  }}"
+  tasks:
+    - name: Show resolv.conf
+      ansible.builtin.command: "cat /etc/resolv.conf"
+      register: resolv
+      changed_when: false
+    - name: Test DNS resolution
+      ansible.builtin.shell: "getent hosts {{ test_domain }} || true"
+      register: dns_test
+      changed_when: false
