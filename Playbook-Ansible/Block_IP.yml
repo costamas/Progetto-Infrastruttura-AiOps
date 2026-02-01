@@ -1,0 +1,22 @@
+---
+- name: block_ip.yml
+  hosts: "{{ host | default('all') }}"
+  become: true
+  gather_facts: false
+  vars:
+    bad_ip: "{{ bad_ip }}"
+    direction: "{{ direction | default('in') }}"
+  tasks:
+    - name: Fail if bad_ip not provided
+      ansible.builtin.fail:
+        msg: "bad_ip is required"
+      when: bad_ip is not defined or bad_ip | length == 0
+    - name: Ensure ufw installed
+      ansible.builtin.package:
+        name: ufw
+        state: present
+    - name: Deny traffic from bad IP
+      community.general.ufw:
+        rule: deny
+        from_ip: "{{ bad_ip }}"
+        direction: "{{ direction }}"
