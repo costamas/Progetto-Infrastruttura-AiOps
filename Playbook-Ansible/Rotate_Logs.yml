@@ -1,0 +1,12 @@
+---
+- name: rotate_logs.yml
+  hosts: "{{ host | default('all') }}"
+  become: true
+  gather_facts: false
+  vars:
+    logrotate_conf: "{{ logrotate_conf | default('/etc/logrotate.conf') }}"
+  tasks:
+    - name: Run logrotate
+      ansible.builtin.command: "logrotate -f {{ logrotate_conf }}"
+      register: lr
+      changed_when: true
