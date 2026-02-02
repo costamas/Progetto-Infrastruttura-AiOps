@@ -67,3 +67,4 @@
 
     |_ Deploy-Zabbix-Server.yml (Manifest per il rilascio e configurazione dei pods Kubernetes associati a Zabbix Server).
     |_ zabbix_server.conf (File di configurazione iniziale del cluster Zabbix Front End).
+    
