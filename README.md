@@ -48,9 +48,6 @@ Modulo-Zabbix-Client (Insieme dei file .yml necessari al corretto rilascio e all
     |_ install_zabbix_agent.yml
     |_ update.yml
     |_ update_zabbix_agent.yml
-    |_ zabbix_agent2.man
-    |_ zabbix_agentd.man
-    |_ zabbix_get.man
 
 Modulo-Zabbix-Database (Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pod e dei services del modulo Zabbix-Database).
 
@@ -63,12 +60,10 @@ Modulo-Zabbix-Database (Insieme dei file .yml necessari al corretto rilascio e a
        
 Modulo-Zabbix-Front-End (Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pod e dei services del modulo Zabbix-FrontEnd).
 
-    |_ Deploy-Zabbix-FrontEnd.yml
-    |_ zabbix_web_service.man
+    |_ Deploy-Zabbix-FrontEnd.yml  (Manifest per il rilascio e configurazione dei pods Kubernetes associati a Zabbix Front End). 
+    |_ zabbix_web_service.man (Documentazione Zabbix based relativa al FE). 
     
 Modulo-Zabbix-Server (Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pod e dei services del modulo Zabbix-Server).
 
-    |_ Deploy-Zabbix-Server.yml
-    |_ zabbix_sender.man
-    |_ zabbix_server.conf
-    |_ zabbix_server.man
+    |_ Deploy-Zabbix-Server.yml (Manifest per il rilascio e configurazione dei pods Kubernetes associati a Zabbix Server).
+    |_ zabbix_server.conf (File di configurazione iniziale del cluster Zabbix Front End).
