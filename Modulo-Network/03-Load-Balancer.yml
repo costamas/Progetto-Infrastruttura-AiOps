@@ -5,7 +5,7 @@ metadata:
   name: traefik
   namespace: traefik
 spec:
-  type: LoadBalancer # MetalLB assegna l'IP esterno: di tipo LOAD BALANCER!!!!!!
+  type: LoadBalancer
   selector:
     app.kubernetes.io/name: traefik
   ports:
