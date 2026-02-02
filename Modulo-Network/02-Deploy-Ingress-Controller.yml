@@ -4,36 +4,15 @@ kind: Ingress
 metadata:
   name: ingress-proxlab.net-ingress
 spec:
-  ingressClassName: traefik # Questo ingress deve essere gestito da Trafeik
+  ingressClassName: traefik
   rules:
     - host: www.proxlab.net
       http:
         paths:
-          - path: /pod-prod-portale-1
+          - path: /zabbix-server-fe
             pathType: Prefix
             backend:
               service:
-                name: service-prod-portale-1
-                port:
-                  number: 80
-          - path: /pod-prod-portale-2
-            pathType: Prefix
-            backend:
-              service:
-                name: service-prod-portale-2
-                port:
-                  number: 80
-          - path: /pod-prod-portale-3
-            pathType: Prefix
-            backend:
-              service:
-                name: service-prod-portale-3
-                port:
-                  number: 80
-          - path: /pod-prod-portale-4
-            pathType: Prefix
-            backend:
-              service:
-                name: service-prod-portale-4
+                name: /zabbix-server-fe
                 port:
                   number: 80
