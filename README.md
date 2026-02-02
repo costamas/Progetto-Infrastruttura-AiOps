@@ -2,7 +2,7 @@
 *Si riporta di seguito l'alberatura del repository:*
 
 
-***Modulo-AWX*** **(Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pods e dei services del modulo AWX).**
+## ***Modulo-AWX*** **(Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pods e dei services del modulo AWX).**
 
     |_ Deploy-Awx-Installation.yml (Manifest per il rilascio e configurazione dei pods Kubernetes associati al modulo AWX). 
     |_ Deploy-Awx-Operator.yml (Manifest per il rilascio e configurazione dell'operator Kubernetes associato al modulo AWX). 
