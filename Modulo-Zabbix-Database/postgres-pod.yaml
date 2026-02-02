@@ -13,7 +13,7 @@ spec:
       value: zabbix
     - name: POSTGRES_PASSWORD
       value: zabbixpassword
-    - name: PGDATA                      # ← aggiungi questa riga
+    - name: PGDATA
       value: /var/lib/postgresql/data/pgdata
     ports:
     - containerPort: 5432
