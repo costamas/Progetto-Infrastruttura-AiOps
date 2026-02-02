@@ -1,3 +1,14 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: awx-admin-password
+  namespace: awx
+type: Opaque
+stringData:
+  # Password robusta generata casualmente
+  password: "P@ssw0rd!23#Secure456"
+
+---
 apiVersion: awx.ansible.com/v1beta1
 kind: AWX
 metadata:
@@ -8,13 +19,3 @@ spec:
   replicas: 1
   admin_user: admin
   admin_password_secret: awx-admin-password
-
-
-apiVersion: v1
-kind: Secret
-metadata:
-  name: awx-admin-password
-  namespace: awx
-type: Opaque
-stringData:
-  password: admin123
