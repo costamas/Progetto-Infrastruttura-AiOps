@@ -1,14 +1,14 @@
-Il presente repository contiene l'insieme dei manifest e dei file yaml necessari per il deploy di un'infrastruttura AiOps basata su microservizi.
-Si riporta di seguito l'alberatura del repository: 
+*Il presente repository contiene l'insieme dei manifest e dei file yaml necessari per il deploy di un'infrastruttura AiOps basata su microservizi.*
+*Si riporta di seguito l'alberatura del repository:*
 
 
-***Modulo-AWX*** (Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pods e dei services del modulo AWX).
+***Modulo-AWX*** **(Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pods e dei services del modulo AWX).**
 
-    |_ ***Deploy-Awx-Installation.yml*** (Manifest per il rilascio e configurazione dei pods Kubernetes associati al modulo AWX). 
-    |_ ***Deploy-Awx-Operator.yml*** (Manifest per il rilascio e configurazione dell'operator Kubernetes associato al modulo AWX). 
-    |_ ***Deploy-Awx-ServiceAccount.yml*** (Manifest per il rilascio e configurazione dei ServiceAccount Kubernetes associati al modulo AWX). 
+    |_ Deploy-Awx-Installation.yml (Manifest per il rilascio e configurazione dei pods Kubernetes associati al modulo AWX). 
+    |_ Deploy-Awx-Operator.yml (Manifest per il rilascio e configurazione dell'operator Kubernetes associato al modulo AWX). 
+    |_ Deploy-Awx-ServiceAccount.yml (Manifest per il rilascio e configurazione dei ServiceAccount Kubernetes associati al modulo AWX). 
     
-Modulo-Ansible-Automation-Platform (Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pods e dei services del modulo Ansible Automation Platform).
+***Modulo-Ansible-Automation-Platform*** (Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pods e dei services del modulo Ansible Automation Platform).**
 
     |_ Deploy-Modulo-Ansible.yml (Manifest per il rilascio e configurazione dei pods Kubernetes associati al modulo Ansible Automation Platform). 
     |_ Playbook-Ansible (Cartella contenente tutti i plybook Ansible necessari alla risoluzione automatica delle problematiche).
@@ -20,27 +20,27 @@ Modulo-Ansible-Automation-Platform (Insieme dei file .yml necessari al corretto 
        |_ Manage_Swap.yml (Playbook Ansible per la gestione di problematiche relative alla Swap Memory).
        |_ Restart_Services.yml (Playbook Ansible per la gestione di problematiche relative al malfunzionamento di servizi).
        |_ Rotate_Logs.yml (Playbook Ansible per la gestione di problematiche relative alla rotazione dei logs).
-Modulo-Dify-AI (Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pods e dei services del modulo Dify-AI).
+***Modulo-Dify-AI*** (Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pods e dei services del modulo Dify-AI).**
 
     |_ Deploy-Modulo-AI-Engine.yml (Manifest per il rilascio e configurazione deipodsPod Kubernetes associati al modulo Dify-AI). 
     
-Modulo-Grafana (Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pods e dei services del modulo Grafana).
+***Modulo-Grafana*** (Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pods e dei services del modulo Grafana).**
 
     |_ Deploy-Grafana-Installation.yml (Manifest per il rilascio e configurazione dei pods Kubernetes associati al modulo Grafana).
     |_ Deploy-Grafana-Prerequisites.yml (Manifest per il rilascio e configurazione dei prerequisiti necessari al corretto deploy del modulo Grafana). 
     |_ Deploy-Grafana-Service.yml (Manifest per il rilascio e configurazione dei services associati al modulo Grafana). 
 
-Modulo-Network (Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pod e dei services del modulo di Networking e instradamento del routing tra i Pod).
+***Modulo-Network*** (Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pod e dei services del modulo di Networking e instradamento del routing tra i Pod).**
 
     |_ Configurazione-MetaLB.yml (Manifest per il rilascio e configurazione dei pods Kubernetes associati al modulo di networking). 
     |_ Deploy-Ingress-Controller.yml (Manifest per il rilascio e configurazione dell'Ingress Controller Kubernetes per il corretto instradamento del traffico). 
     |_ Load-Balancer.yml (Manifest per il rilascio e configurazione dei pods Kubernetes associati al bilanciatore di rete in ingresso). 
 
-Modulo-Storage-Distribuito-Longhorn (Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pod e dei services del modulo di storage distribuito Longhorn).
+***Modulo-Storage-Distribuito-Longhorn*** (Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pod e dei services del modulo di storage distribuito Longhorn).**
 
     |_ Deploy-Storage-Class-Longhorn.yml (Manifest per il rilascio e configurazione dei pods Kubernetes associati al modulo di storage distribuito).
 
-Modulo-Zabbix-Client (Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pod e dei services del modulo Zabbix-Client).
+***Modulo-Zabbix-Client*** (Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pod e dei services del modulo Zabbix-Client).**
 
     |_ configure.yml
     |_ hosts.ini
@@ -49,7 +49,7 @@ Modulo-Zabbix-Client (Insieme dei file .yml necessari al corretto rilascio e all
     |_ update.yml
     |_ update_zabbix_agent.yml
 
-Modulo-Zabbix-Database (Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pod e dei services del modulo Zabbix-Database).
+***Modulo-Zabbix-Database*** (Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pod e dei services del modulo Zabbix-Database).**
 
     |_ postgres-cluster.yml (Manifest per il rilascio e configurazione del cluster PostgreSQL con N°2 nodi - Master e Replica).
     |_ postgres-pod.yml (Manifest per il rilascio e configurazione dei pods Kubernetes associati al modulo di storage distribuito).
@@ -58,12 +58,12 @@ Modulo-Zabbix-Database (Insieme dei file .yml necessari al corretto rilascio e a
        |_ images.sql (Script SQL per la corretta inizializzazione delle tabelle associate a Zabbix in PostgreSQL).
        |_ schema.sql (Script SQL per la corretta inizializzazione delle tabelle associate a Zabbix in PostgreSQL).
        
-Modulo-Zabbix-Front-End (Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pod e dei services del modulo Zabbix-FrontEnd).
+***Modulo-Zabbix-Front-End*** (Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pod e dei services del modulo Zabbix-FrontEnd).**
 
     |_ Deploy-Zabbix-FrontEnd.yml  (Manifest per il rilascio e configurazione dei pods Kubernetes associati a Zabbix Front End). 
     |_ zabbix_web_service.man (Documentazione Zabbix based relativa al FE). 
     
-Modulo-Zabbix-Server (Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pod e dei services del modulo Zabbix-Server).
+***Modulo-Zabbix-Server*** (Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pod e dei services del modulo Zabbix-Server).**
 
     |_ Deploy-Zabbix-Server.yml (Manifest per il rilascio e configurazione dei pods Kubernetes associati a Zabbix Server).
     |_ zabbix_server.conf (File di configurazione iniziale del cluster Zabbix Front End).
