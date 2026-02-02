@@ -42,12 +42,12 @@
 
 ## ***Modulo-Zabbix-Client*** **(Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pod e dei services del modulo Zabbix-Client).**
 
-    |_ configure.yml
-    |_ hosts.ini
-    |_ install.yml
-    |_ install_zabbix_agent.yml
-    |_ update.yml
-    |_ update_zabbix_agent.yml
+    |_ configure.yml (Manifest che esplicità il ruolo Ansible in caso di prima o successiva configurazione del modulo Zabbix-Agent).
+    |_ hosts.ini (File che identifica su quali host remoti dovrà essere installato il modulo Zabbix-Agent).
+    |_ install.yml (Manifest che esplicità il ruolo Ansible in caso di prima installazione del modulo Zabbix-Agent). 
+    |_ install_zabbix_agent.yml (Manifest di installazione del modulo Zabbix-Agent).
+    |_ update.yml (Manifest che esplicità il ruolo Ansible in caso di aggiornamento del modulo Zabbix-Agent).
+    |_ update_zabbix_agent.yml (Manifest di aggiornamento del modulo Zabbix-Agent).
 
 ## ***Modulo-Zabbix-Database*** **(Insieme dei file .yml necessari al corretto rilascio e alla corretta configurazione dei pod e dei services del modulo Zabbix-Database).**
 
